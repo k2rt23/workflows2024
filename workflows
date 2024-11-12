@@ -1,0 +1,26 @@
+on:
+  push:
+    branches:
+      - main 
+
+jobs:
+  mail_on_push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Mail
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 587
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+          subject: Send Mail
+          body: |
+          Täna on ilus päev!
+            
+            ${{ github.event.pusher.name }} repost 
+            ${{ github.repository }} sõnumiga 
+            ${{ github.event.head_commit.message }}
+
+          to:juri.vaitmaa@tthk.ee
+          from:Github actions
