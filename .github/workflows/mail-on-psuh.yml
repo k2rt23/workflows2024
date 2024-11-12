@@ -22,5 +22,5 @@ jobs:
             ${{ github.repository }} sõnumiga 
             ${{ github.event.head_commit.message }}
 
-          to:juri.vaitmaa@tthk.ee
+          to:karttriin@gmail.com
           from:Github actions
